@@ -28,8 +28,8 @@ public class Person {
             account.setPin(pin);
 
             System.out.println("Enter the amount you want to deposit\r");
-            double Intitaldeposit = input.nextDouble();
-            account.setBalance(Intitaldeposit);
+            double initialDeposit = input.nextDouble();
+            account.setBalance(initialDeposit);
             myAccount.add(account);
             input.nextLine();
             System.out.println("Do you want to create another account? Yes or No\r");
