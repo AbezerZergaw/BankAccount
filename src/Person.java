@@ -10,20 +10,19 @@ public class Person {
 
         double balance;
         String YesOrNO;
-        //  Scanner input = new Scanner(System.in);
         ArrayList<Account> myAccount = new ArrayList<>();
         // creates a new accounts
         do {
 
 
-            System.out.println("Enter your account number\r");
+            System.out.println("Enter your new account number\r");
 
             Account account = new Account();
 
             String accNum = input.nextLine();
             account.setNumber(accNum);
 
-            System.out.println("Enter your PIN\r");
+            System.out.println("Enter new PIN\r");
             String pin = input.nextLine();
             account.setPin(pin);
 
@@ -38,30 +37,30 @@ public class Person {
         } while (YesOrNO.equalsIgnoreCase("Yes"));
 
 
-        // a user enters his account number and pin
+        // a user enters his account number and pin to login
 
-        int count=0;
-        //boolean
+        int count = 0;
 
         do {
 
-        Account account1 = new Account();
+            Account account1 = new Account();
 
-        System.out.println("Please Enter Your Account Number to Login:");
+            System.out.println("Please Enter Your Account Number to Login:");
 
-        String actNum = input.nextLine();
-        account1.setNumber(actNum);
-        System.out.println("Please Enter Your PIN to Login: ");
+            String actNum = input.nextLine();
+            account1.setNumber(actNum);
 
-        String pinNum = input.nextLine();
-        account1.setPin(pinNum);
+            System.out.println("Please Enter Your PIN to Login: ");
 
-
-        //after accepting pin
-        // int i;
+            String pinNum = input.nextLine();
+            input.nextLine();
+            account1.setPin(pinNum);
 
 
-        //validation
+            //after accepting account number and  pin
+
+
+            //validation account number and PIN
 
 
             for (int i = 0; i < myAccount.size(); i++) {
@@ -74,22 +73,27 @@ public class Person {
                             + "\n 3. Withdraw\n 4. Log Out\n\n");
 
                     int menuChoice = input.nextInt();
+                    input.nextLine();
 
                     if (menuChoice < 1 || menuChoice > 4) {
                         System.out.println("error");
+
                     } else if (menuChoice == 1) {
                         displayBalance(balance);
                     } else if (menuChoice == 2) {
                         System.out.println("Enter the Amount you want to deposit !");
                         double deposit = input.nextDouble();
+                        input.nextLine();
                         deposit(deposit, balance);
 
                     } else if (menuChoice == 3) {
                         System.out.println("enter the amount you want to withdraw ");
-                        double withmoney = input.nextDouble();
-                        withdraw(withmoney, balance);
+                        double withdrawMoney = input.nextDouble();
+                        input.nextLine();
+                        withdraw(withdrawMoney, balance);
                     } else if (menuChoice == 4) {
-                        System.out.println("Thank you for banking we us");
+                        System.out.println("Thank you for banking we us.");
+                        break;
                     } else
                         System.out.println("Invalid Input");
                 } else {
@@ -99,34 +103,35 @@ public class Person {
             }
             count++;
 
-        }while(count<3);
+        } while (count < 3);
 
-        if(count==3){
-            System.out.println("Your Account is LOCKED !");
+        if (count == 3 ) {
+            System.out.println("Your Account is LOCKED!");
         }
     }
 
 
-
+    // methods for accessing account
 
     public static void displayBalance(double x) {
         System.out.printf("\nYour Current Balance is $%.2f\n", x);
     }
 
-    public static void withdraw(double money,double balance) {
+    public static void withdraw(double money, double balance) {
 
-        if(money>balance){
+        if (money > balance) {
             System.out.println("Withdraw not processed Try different amount");
 
-        }else
+        } else
 
-        balance = balance - money;
+            balance = balance - money;
         System.out.println("Your Remaining balance is:" + balance);
 
     }
-    public static void deposit(double money,double balance){
 
-        balance = balance +money ;
+    public static void deposit(double money, double balance) {
+
+        balance = balance + money;
         System.out.println("Your balance is :" + money);
 
     }
@@ -135,13 +140,6 @@ public class Person {
 
 
 
-        /*for (int i = 0; i < myAccount.size(); i++)
-
-        {
-            System.out.println(myAccount.get(i).getBalance() + " " + myAccount.get(i).getNumber());
-
-
-        }*/
 
 
 
